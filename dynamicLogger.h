@@ -38,9 +38,9 @@ typedef enum _LogStatus_t {
 
 /*Event data published by dynamic logger module*/
 typedef struct _DynamicLogger_EventData_t {
-  char appName[15];
-  char moduleName[15];
-  char subModuleName[15];
+  char appName[25];
+  char moduleName[40];
+  char subModuleName[35];
   char logLevel[10];
   LogStatus_t log_status;
 }IARM_Bus_DynamicLogger_EventData_t;

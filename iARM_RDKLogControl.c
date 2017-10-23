@@ -37,7 +37,7 @@ void usage ()
     printf ("\t\t [SUB COMPONENT NAME] -> Sub components under the given component\n");
     printf ("\t\t                         NULL if log need to be enabled for all sub components\n");
     printf ("\t\t [LOG LEVEL]          -> See available options below\n");
-    printf ("\t\t [STATUS]             -> ON/OFF to enable/disable Dynamic logging\n");
+//    printf ("\t\t [STATUS]             -> ON/OFF to enable/disable Dynamic logging\n");
 
 
     printf ("\n\t Available [A]pplications, [C]omponents, [S]ubComponents, [L]og Levels:\\n"); //ACSL
@@ -57,6 +57,8 @@ int main(int argc, char *argv[])
     IARM_Bus_DynamicLogger_EventData_t eventData;
     memset(&eventData,0,sizeof(eventData));
 
+#if 0
+    //Code portion to support ON/OFF
     if(6 == argc)
     {
         if(0 == strncmp("ON",argv[5], 2))
@@ -73,6 +75,11 @@ int main(int argc, char *argv[])
             ret = 1;
         }
 
+    }
+#endif
+    if(5 == argc)
+    {
+        eventData.log_status = LOG_ENABLE;
     }
     else if ((2 == argc) && (argv[1][1] == 'h'))
     {
