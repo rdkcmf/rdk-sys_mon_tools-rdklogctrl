@@ -96,14 +96,12 @@ int main(int argc, char *argv[])
         IARM_Bus_Init("IARM_BUS_DYNAMIC_LOGGER_NAME");
         IARM_Bus_Connect();
 
-        strncpy(eventData.appName, argv[1],strlen(argv[1]));
-        eventData.appName[strlen(argv[1]) + 1] = '\0';
-        strncpy(eventData.moduleName, argv[2], strlen(argv[2]));
-        eventData.moduleName[strlen(argv[2]) + 1] = '\0';
-        strncpy(eventData.subModuleName, argv[3], strlen(argv[3]));
-        eventData.subModuleName[strlen(argv[3]) + 1] = '\0';
-        strncpy(eventData.logLevel, argv[4],strlen(argv[4]));
-        eventData.logLevel[strlen(argv[4]) + 1] = '\0';
+        strncpy(eventData.appName, argv[1], (sizeof(eventData.appName) - 1));
+        strncpy(eventData.moduleName, argv[2], (sizeof(eventData.moduleName) - 1));
+        strncpy(eventData.subModuleName, argv[3], (sizeof(eventData.subModuleName) - 1));
+        strncpy(eventData.logLevel, argv[4], (sizeof(eventData.logLevel) - 1));
+
+        //printf("Event data size details : \n eventData.appName(%s) : %d \n eventData.moduleName(%s) : %d \n eventData.subModuleName(%s) : %d \n eventData.logLevel(%s) : %d \n",eventData.appName, sizeof(eventData.appName),eventData.moduleName, sizeof(eventData.moduleName),eventData.subModuleName, sizeof(eventData.subModuleName),eventData.logLevel, sizeof(eventData.logLevel));
 
         retVal = IARM_Bus_BroadcastEvent(IARM_BUS_DYNAMIC_LOGGER_NAME,(IARM_EventId_t)IARM_BUS_DYNAMICLOGGER_EVENT_LOG_STATUS,(void *)&eventData, sizeof(eventData));
 

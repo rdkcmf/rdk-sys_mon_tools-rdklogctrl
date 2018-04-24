@@ -24,6 +24,8 @@
 
 #define IARM_BUS_DYNAMIC_LOGGER_NAME "iARMDynamicLogger_tool"
 
+#define LENGTH_1 64
+#define LENGTH_2 64
 /*IARM event published by dynamic logger module*/
 typedef enum _DynamicLogger_EventId_t {
     IARM_BUS_DYNAMICLOGGER_EVENT_LOG_STATUS=0,
@@ -38,10 +40,10 @@ typedef enum _LogStatus_t {
 
 /*Event data published by dynamic logger module*/
 typedef struct _DynamicLogger_EventData_t {
-  char appName[25];
-  char moduleName[40];
-  char subModuleName[35];
-  char logLevel[10];
+  char appName[LENGTH_1];
+  char moduleName[LENGTH_1];
+  char subModuleName[LENGTH_1];
+  char logLevel[LENGTH_2];
   LogStatus_t log_status;
 }IARM_Bus_DynamicLogger_EventData_t;
 
